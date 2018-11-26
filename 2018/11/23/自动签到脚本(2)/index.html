@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="自动签到脚本">
+        <meta property="og:title" content="自动签到脚本（2）">
     
 
     <!--Open Graph Description-->
@@ -42,7 +42,7 @@
     <!--Page Cover-->
     
     
-        <meta property="og:image" content="http://yoursite.com./img/contact-bg.jpg">
+        <meta property="og:image" content="http://yoursite.comimg/contact-bg.jpg">
     
 
         <meta name="twitter:card" content="summary_large_image">
@@ -50,12 +50,12 @@
     
 
     
-        <meta name="twitter:image" content="http://yoursite.com./img/contact-bg.jpg">
+        <meta name="twitter:image" content="http://yoursite.comimg/contact-bg.jpg">
     
 
     <!-- Title -->
     
-    <title>自动签到脚本 - Frz</title>
+    <title>自动签到脚本（2） - Frz</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -160,18 +160,18 @@
     <!-- Page Header -->
 <!-- Set your background image for this header in your post front-matter: cover -->
 
-<header class="intro-header" style="background-image: url('./img/contact-bg.jpg')">
+<header class="intro-header" style="background-image: url('about-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>自动签到脚本</h1>
+                    <h1>自动签到脚本（2）</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2018-11-21
+                            2018-11-23
                         
                     </span>
                 </div>
@@ -193,10 +193,10 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>最代码这个网站中有很多不错的代码，但是有一个最不好的就是，下载里面的代码需要消耗牛币。获得牛币的方法就是通过签到、购买和发布代码让别的用户下载，因此为了下载代码，我一般及时通过签到。<br>最近才有时间闲下来搞搞自己的一些小工具，Python语言也学了很多了，基本语法我都有了解，现在需要巩固的就是多使用Python提供的各种模块，模块的功能是强大的。所以我想着就写了个自动签到的脚本。</p>
-<h2 id="脚本的准备"><a href="#脚本的准备" class="headerlink" title="脚本的准备"></a>脚本的准备</h2><h3 id="下载需要使用的模块"><a href="#下载需要使用的模块" class="headerlink" title="下载需要使用的模块"></a>下载需要使用的模块</h3><h4 id="这里主要使用的模块有三个"><a href="#这里主要使用的模块有三个" class="headerlink" title="这里主要使用的模块有三个"></a>这里主要使用的模块有三个</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">import datetime</span><br><span class="line">from selenium import webdriver</span><br></pre></td></tr></table></figure>
-<h4 id="除了模块之外还需要下载支持谷歌的自动化测试工具-Selenium-WebDriver"><a href="#除了模块之外还需要下载支持谷歌的自动化测试工具-Selenium-WebDriver" class="headerlink" title="除了模块之外还需要下载支持谷歌的自动化测试工具   Selenium WebDriver"></a>除了模块之外还需要下载支持谷歌的自动化测试工具   <a href="http://npm.taobao.org/mirrors/chromedriver/" target="_blank" rel="noopener">Selenium WebDriver</a></h4><p>选择与下载的谷歌版本号相同的版本</p>
-<h3 id="下面是具体的脚本"><a href="#下面是具体的脚本" class="headerlink" title="下面是具体的脚本"></a>下面是具体的脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">username = <span class="string">"593848632@qq.com"</span> <span class="comment">#登录账号</span></span><br><span class="line">password = <span class="string">"qq593848632"</span><span class="comment">#登录密码</span></span><br><span class="line">message = <span class="string">"今天好累呀"</span>+datetime.date.today().strftime(<span class="string">"%y%m%d"</span>)</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome() <span class="comment">#模拟谷歌浏览器打开网站</span></span><br><span class="line">driver.get(<span class="string">"http://www.zuidaima.com/user/login.htm"</span>)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    <span class="comment">#输入用户名</span></span><br><span class="line">    driver.find_element_by_id(<span class="string">"account"</span>).send_keys(username)</span><br><span class="line">    time.sleep(1)</span><br><span class="line">    <span class="comment">#输入密码</span></span><br><span class="line">    driver.find_element_by_id(<span class="string">"password"</span>).send_keys(password)</span><br><span class="line">    time.sleep(1)</span><br><span class="line">    <span class="comment">#点击登录</span></span><br><span class="line">    driver.find_element_by_id(<span class="string">"login"</span>).click()</span><br><span class="line">    time.sleep(1)</span><br><span class="line"></span><br><span class="line">    driver.get(<span class="string">"http://www.zuidaima.com/"</span>)</span><br><span class="line">    <span class="comment"># #点击签到界面</span></span><br><span class="line">    <span class="comment"># driver.find_element_by_id("mood_input").click()</span></span><br><span class="line">    <span class="comment"># time.sleep(1)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#输入签到信息</span></span><br><span class="line">    driver.find_element_by_id(<span class="string">"mood_input"</span>).send_keys(message)</span><br><span class="line">    time.sleep(1)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#完成签到</span></span><br><span class="line">    driver.find_element_by_id(<span class="string">"mood_publish"</span>).click()</span><br><span class="line">    time.sleep(1)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"签到成功"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">except:</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"签到失败"</span>)</span><br><span class="line"></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+                <p>  前面谈到的自动签到脚本中，每次运行脚本的时候都需要进行打开浏览器的操作，这样子显得很麻烦，如果我在玩着电脑突然弹出一个网页就会觉得很难受。<br>  所以这次我改进了脚本，通过使用headless第三方库实现不打开浏览器完成签到。</p>
+<h2 id="脚本的准备"><a href="#脚本的准备" class="headerlink" title="脚本的准备"></a>脚本的准备</h2><h3 id="不多说了直接上代码吧"><a href="#不多说了直接上代码吧" class="headerlink" title="不多说了直接上代码吧"></a>不多说了直接上代码吧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">options = webdriver.ChromeOptionsions()</span><br><span class="line">options.add_arg_argument(<span class="string">"headless"</span>)</span><br><span class="line">driver = webdriver.Chrome(chrome_options=options) <span class="comment">#模拟谷歌浏览器打开网站</span></span><br><span class="line">driver.get(<span class="string">"http://www.zuidaima.com/user/login.htm"</span>)</span><br></pre></td></tr></table></figure>
+<p>直接按照我上一篇博客在相应的位置加入这段代码就可以了</p>
+
 
                 
             </div>
